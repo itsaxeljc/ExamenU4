@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reservacion</ion-title>
+    <ion-button
+      class="cerrarSesion"
+      (click)="cerrarSesion()"
+      slot="end"
+      color="danger"
+    >
+      <ion-icon name="exit"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-datetime [(ngModel)]="reservacion.fecha" [min]="hoy"></ion-datetime>
+  <ion-range
+    [ticks]="true"
+    [snaps]="true"
+    [min]="0"
+    [max]="5"
+    [(ngModel)]="reservacion.alberca"
+    (ionChange)="calcular()"
+  ></ion-range>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label> Brincolin</ion-label>
+          <ion-toggle
+            [(ngModel)]="reservacion.brincolin"
+            (ionChange)="calcular()"
+          ></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label> Mesa</ion-label>
+          <ion-toggle
+            [(ngModel)]="reservacion.mesaPostres"
+            (ionChange)="calcular()"
+          ></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label> Futbolito</ion-label>
+          <ion-toggle
+            [(ngModel)]="reservacion.futbolito"
+            (ionChange)="calcular()"
+          ></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-label> TOTAL {{reservacion.costoTotal|currency}} </ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-buttons>
+        <ion-button (click)="reservar()" color="success"> REGISTRAR </ion-button>
+      </ion-buttons>
+    </ion-row>
+  </ion-grid>
+</ion-content>

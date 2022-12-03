@@ -6,6 +6,8 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["tsconfig.json"],
+        "tsconfigRootDir": "__dirname",
+        "sourceType": "module",
         "createDefaultProgram": true
       },
       "extends": [

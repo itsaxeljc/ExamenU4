@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="card-container">
+    <ion-card>
+      <ion-row>
+        <ion-col class="welcome">
+          <ion-card-header>
+            <ion-card-title> Casino</ion-card-title>
+            <form [formGroup]="myForm">
+              <!-- token -->
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-input
+                      class="custom"
+                      (keyup.enter)="login()"
+                      placeholder="Tel o admin keyword"
+                      formControlName="token"
+                    >
+                    </ion-input>
+                  </ion-item>
+                  <div>
+                    <ng-container
+                      *ngFor="let item of validationMessages['token']"
+                    >
+                      <div
+                        class="error-message"
+                        *ngIf="
+                (myForm.get('token').dirty || myForm.get('token').touched) &&
+                myForm.get('token').hasError(item.type)"
+                      >
+                        {{item.message}}
+                      </div>
+                    </ng-container>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-button (click)="login()" color="primary">
+              Ingresar
+            </ion-button>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+</ion-content>

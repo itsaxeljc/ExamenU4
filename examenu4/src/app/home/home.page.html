@@ -1,20 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Examen U4 </ion-title>
+    <ion-button
+      class="cerrarSesion"
+      (click)="cerrarSesion()"
+      slot="end"
+      color="danger"
+    >
+      <ion-icon name="exit"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="secondary">
+          <ion-item>
+            <ion-label> Filtrar </ion-label>
+            <ion-toggle
+              [(ngModel)]="filtrar"
+              (ionChange)="getReservaciones()"
+            ></ion-toggle>
+          </ion-item>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-card-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-content>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let reservacion of reservaciones">
+            <ion-label>
+              {{reservacion.telefonoCliente}} <br />
+              {{reservacion.fecha | date}} <br />
+              {{reservacion.nombreCliente}} <br />
+              {{reservacion.costoTotal | currency}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-content>
 </ion-content>
