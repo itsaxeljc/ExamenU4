@@ -5,6 +5,7 @@ import { Reservacion } from '../models/reservacion';
 import { ReservacionService } from '../services/reservacion.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { format, add, parseISO, addDays } from 'date-fns';
 
 @Component({
   selector: 'app-reservaciones',
@@ -14,11 +15,12 @@ import { AlertController } from '@ionic/angular';
 export class ReservacionesPage implements OnInit {
   reservaciones: Reservacion[] = [];
   hoy = new Date().toISOString();
+  fechaIngreso: string;
 
   tel = '';
   reservacion: Reservacion = {
     costoTotal: 1000,
-    fecha: new Date().toISOString(),
+    fecha: '',
     nombreCliente: '',
     telefonoCliente: '',
     alberca: 0,
@@ -114,4 +116,15 @@ export class ReservacionesPage implements OnInit {
   public cerrarSesion() {
     this.router.navigate(['/login']);
   }
+
+  public fechaSeleccionadaIngreso(evento: any): void {
+    try {
+      const ingreso = format(parseISO(evento.detail.value), 'yyyy-MM-dd');
+      this.reservacion.fecha = format(addDays(parseISO(ingreso), 0), 'yyyy-MM-dd');
+      console.log(this.reservacion.fecha);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
+

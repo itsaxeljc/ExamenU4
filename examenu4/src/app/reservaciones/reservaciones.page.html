@@ -13,7 +13,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-datetime [(ngModel)]="reservacion.fecha" [min]="hoy"></ion-datetime>
+  <ion-datetime 
+    [min]="hoy" 
+    presentation="date" (ionChange)="fechaSeleccionadaIngreso($event)">
+  </ion-datetime>
   <ion-range
     [ticks]="true"
     [snaps]="true"

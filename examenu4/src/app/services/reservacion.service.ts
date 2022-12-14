@@ -31,6 +31,10 @@ export class ReservacionService {
     this.firestore.collection('Reservaciones').add(reservacion);
   }
 
+  public borrarHuesped(id: string){
+    this.firestore.collection('Reservaciones').doc(id).delete();
+  }
+
   getDatos() {
     return this.coleccionReservacion;
   }

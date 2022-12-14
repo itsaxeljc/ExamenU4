@@ -6,5 +6,6 @@ export class Reservacion {
   brincolin?: boolean;
   mesaPostres?: boolean;
   futbolito?: boolean;
-  alberca?: number
+  alberca?: number;
+  id?: string;
 }
